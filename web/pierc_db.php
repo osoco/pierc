@@ -30,7 +30,10 @@ class pierc_db extends db_class
 		$counter = 0;
 		while( $row = mysql_fetch_assoc($result) )
 		{
-			error_log("Found row $row");
+			error_log("Found row");
+			foreach($row[0] as $child) {
+		 	   error_log($child . "\n");
+			}
 			if( isset( $row['logTime'] ) )
 			{
 				date_default_timezone_set('UTC');
