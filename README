@@ -1,3 +1,6 @@
+This fork is under development and not yet usable. It is a fork of Pierc to try to adapt it to read logs from an Openfire database. Only the log browser is usefull in this case, so we will remove the bot.
+
+Original project README:
 
 Pierc is a python bot that logs IRC channels, and a PHP/JS interface for browsing said logs.
 
