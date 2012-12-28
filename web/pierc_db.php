@@ -25,10 +25,12 @@ class pierc_db extends db_class
 {
 	protected function hashinate( $result )
 	{
+		error_log("Called hashinate");
 		$lines = array();
 		$counter = 0;
 		while( $row = mysql_fetch_assoc($result) )
 		{
+			error_log("Found row $row");
 			if( isset( $row['logTime'] ) )
 			{
 				date_default_timezone_set('UTC');
@@ -44,6 +46,7 @@ class pierc_db extends db_class
 	
 	public function get_last_n_lines( $roomID, $n )
 	{
+		error_log("Called get_last_n_lines");
 		$roomID = mysql_real_escape_string( $roomID );
 		$n = (int)$n;
 		$query = "
@@ -58,6 +61,7 @@ class pierc_db extends db_class
 	
 	public function get_before( $roomID, $id, $n )
 	{
+		error_log("Called get_before");
 		$roomID = mysql_real_escape_string( $roomID );
 		$n = (int)$n;
 		$id = (int)$id;
@@ -73,6 +77,7 @@ class pierc_db extends db_class
 	
 	public function get_after( $roomID, $id, $n )
 	{
+		error_log("Called get_after");
 		$roomID = mysql_real_escape_string( $roomID );
 		$n = (int)$n;
 		$id = (int)$id;
@@ -88,6 +93,7 @@ class pierc_db extends db_class
 	
 	public function get_lines_between_now_and_id( $roomID, $id)
 	{
+		error_log("Called get_lines_between_now_and_id");
 		$roomID = mysql_real_escape_string( $roomID );
 		$id = (int)$id;
 		$query = "
@@ -103,6 +109,7 @@ class pierc_db extends db_class
 	// Returns the number of records in 'roomID' with an ID below $id
 	public function get_count( $roomID, $id)
 	{
+		error_log("Called get_count");
 		$roomID = mysql_real_escape_string( $roomID );
 		$id = (int)$id;
 		$query = "
@@ -125,6 +132,7 @@ class pierc_db extends db_class
 	
 	public function get_context( $roomID, $id, $n)
 	{
+		error_log("Called get_context");
 		// Let's imagine that we have 800,000 records, divided
 		// between two different roomIDs, #hurf and #durf. 
 		// we want to select the $n (50) records surrounding
@@ -171,6 +179,7 @@ class pierc_db extends db_class
 	
 	public function get_search_results( $roomID, $search, $n, $offset=0 )
 	{
+		error_log("Called get_search_results");
 		$search = mysql_real_escape_string($search);
 		$roomID = mysql_real_escape_string($roomID);
 		$n = (int) $n;
@@ -199,6 +208,7 @@ class pierc_db extends db_class
 	
 	public function get_tag( $roomID, $tag, $n )
 	{
+		error_log("Called get_tag");
 		$tag = mysql_real_escape_string($tag);
 		$roomID = mysql_real_escape_string($roomID);
 		$n = (int)$n;
@@ -217,6 +227,7 @@ class pierc_db extends db_class
 	
 	public function get_lastseen( $roomID, $user )
 	{
+		error_log("Called get_lastseen");
 		$user = mysql_real_escape_string($user);
 		$roomID = mysql_real_escape_string($roomID);
 		
@@ -234,6 +245,7 @@ class pierc_db extends db_class
 	
 	public function get_user( $roomID, $user, $n )
 	{
+		error_log("Called get_user");
 		$user = mysql_real_escape_string($user);
 		$roomID = mysql_real_escape_string($roomID);
 		$n = (int) $n;
