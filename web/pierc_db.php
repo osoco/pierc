@@ -34,12 +34,12 @@ class pierc_db extends db_class
 			foreach($row as $child) {
 		 	   error_log(" - " . $child);
 			}
-			if( isset( $row['logTime'] ) )
+			if( isset( $row['time'] ) )
 			{
 				date_default_timezone_set('UTC');
-				$dt = DateTime::createFromFormat('U', $row['logTime']); //date_create( $row['logTime']);
+				$dt = DateTime::createFromFormat('U', $row['time']); //date_create( $row['time']);
 				$dt->setTimezone( new DateTimeZone($this->timezone));
-				$row['logTime'] = $dt->format("Y-m-d H:i:s"); 
+				$row['time'] = $dt->format("Y-m-d H:i:s"); 
 			}
 			$lines[$counter] = $row;
 			$counter++;
