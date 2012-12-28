@@ -53,7 +53,7 @@ class pierc_db extends db_class
 		$roomID = mysql_real_escape_string( $roomID );
 		$n = (int)$n;
 		$query = "
-			SELECT logTime as id, roomID, nickname, logTime, body, sender as type, 0 as hidden FROM ofMucConversationLog WHERE roomID = '$roomID' ORDER BY logTime DESC LIMIT $n;";
+			SELECT logTime as id, roomID as channel, nickname as name, logTime as time, body as message, sender as type, 'F' as hidden FROM ofMucConversationLog WHERE roomID = '$roomID' ORDER BY logTime DESC LIMIT $n;";
 		
 		$results = mysql_query( $query, $this->_conn);
 		if (!$results){ print mysql_error(); return false; }
@@ -69,7 +69,7 @@ class pierc_db extends db_class
 		$n = (int)$n;
 		$id = (int)$id;
 		$query = "
-			SELECT logTime as id, roomID, nickname, logTime, body, sender as type, 0 as hidden FROM ofMucConversationLog WHERE roomID = '$roomID' AND logTime < $id ORDER BY logTime DESC LIMIT $n;";
+			SELECT logTime as id, roomID as channel, nickname as name, logTime as time, body as message, sender as type, 'F' as hidden FROM ofMucConversationLog WHERE roomID = '$roomID' AND logTime < $id ORDER BY logTime DESC LIMIT $n;";
 		
 		$results = mysql_query( $query, $this->_conn);
 		if (!$results){ print mysql_error(); return false; }
@@ -85,7 +85,7 @@ class pierc_db extends db_class
 		$n = (int)$n;
 		$id = (int)$id;
 		$query = "
-			SELECT logTime as id, roomID, nickname, logTime, body, sender as type, 0 as hidden FROM ofMucConversationLog WHERE roomID = '$roomID' AND logTime > $id ORDER BY logTime ASC, logTime DESC LIMIT $n;";
+			SELECT logTime as id, roomID as channel, nickname as name, logTime as time, body as message, sender as type, 'F' as hidden FROM ofMucConversationLog WHERE roomID = '$roomID' AND logTime > $id ORDER BY logTime ASC, logTime DESC LIMIT $n;";
 		
 		$results = mysql_query( $query, $this->_conn);
 		if (!$results){ print mysql_error(); return false; }
@@ -100,7 +100,7 @@ class pierc_db extends db_class
 		$roomID = mysql_real_escape_string( $roomID );
 		$id = (int)$id;
 		$query = "
-			SELECT logTime as id, roomID, nickname, logTime, body, sender as type, 0 as hidden FROM ofMucConversationLog WHERE roomID = '$roomID' AND logTime > $id ORDER BY logTime DESC LIMIT 500";
+			SELECT logTime as id, roomID as channel, nickname as name, logTime as time, body as message, sender as type, 'F' as hidden FROM ofMucConversationLog WHERE roomID = '$roomID' AND logTime > $id ORDER BY logTime DESC LIMIT 500";
 		
 		$results = mysql_query( $query, $this->_conn);
 		if (!$results){ print mysql_error(); return false; }
@@ -197,7 +197,7 @@ class pierc_db extends db_class
 		
 		$n = (int)$n;
 		$query = "
-			SELECT logTime as id, roomID, nickname, logTime, body, sender as type, 0 as hidden 
+			SELECT logTime as id, roomID as channel, nickname as name, logTime as time, body as message, sender as type, 'F' as hidden 
 				FROM ofMucConversationLog 
 			$searchquery ORDER BY logTime DESC LIMIT $n OFFSET $offset;";
 		
@@ -217,7 +217,7 @@ class pierc_db extends db_class
 		$n = (int)$n;
 		
 		$query = "
-			SELECT logTime as id, roomID, nickname, logTime, body, sender as type, 0 as hidden 
+			SELECT logTime as id, roomID as channel, nickname as name, logTime as time, body as message, sender as type, 'F' as hidden 
 				FROM ofMucConversationLog 
 			WHERE body LIKE '".$tag.":%' ORDER BY logTime DESC LIMIT $n;";
 		
@@ -235,7 +235,7 @@ class pierc_db extends db_class
 		$roomID = mysql_real_escape_string($roomID);
 		
 		$query = "
-			SELECT logTime 
+			SELECT logTime as time
 				FROM ofMucConversationLog 
 			WHERE nickname = '".$user."' ORDER BY logTime DESC LIMIT 1;";
 		
@@ -254,7 +254,7 @@ class pierc_db extends db_class
 		$n = (int) $n;
 		
 		$query = "
-			SELECT logTime as id, roomID, nickname, logTime, body, sender as type
+			SELECT logTime as id, roomID as channel, nickname as name, logTime as time, body as message, sender as type
 				FROM ofMucConversationLog 
 			WHERE nickname = '".$user."' ORDER BY logTime DESC LIMIT ".$n.";";
 		
