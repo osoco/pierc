@@ -8,7 +8,7 @@ class config
 	static $dbms_user = 		"openfire";
 	static $dbms_pass = 		"openfire";
 	
-	static $default_channel =	"logbot_test";
+	static $default_channel =	"1";
 	static $default_number_of_lines = 50;
 
 	static $timezone = 		"Europe/Madrid";

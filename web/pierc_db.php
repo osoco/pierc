@@ -32,7 +32,7 @@ class pierc_db extends db_class
 			if( isset( $row['logTime'] ) )
 			{
 				date_default_timezone_set('UTC');
-				$dt = date_create( $row['logTime']);
+				$dt = DateTime::createFromFormat('U', $row['logTime']); //date_create( $row['logTime']);
 				$dt->setTimezone( new DateTimeZone($this->timezone));
 				$row['logTime'] = $dt->format("Y-m-d H:i:s"); 
 			}
