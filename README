@@ -1,4 +1,7 @@
-This fork is under development and is not yet usable. It is a fork of Pierc to try to adapt it to read logs from an Openfire database. Only the log browser is useful in this case, so we will remove the bot.
+This is a fork of Pierc to try to adapt it to read logs from an Openfire database. Only the log browser is useful in this case, so the bot isn't included.
+
+Installation
+============
 
 Required packages for Debian:
  * mysql-server
@@ -6,6 +9,11 @@ Required packages for Debian:
  * php5
  * php5-mysql
  * libapache2-mod-php5
+
+git clone https://github.com/osoco/pierc.git into a directory served by apache (/var/www for example).
+Copy the file config.php.example to config.php and edit it. You'll need to set the database connection variables at least.
+With a standard apache configuration you should then be able to open http://localhost/web/pierc/index.php to see the log.
+
 
 Original project README:
 
